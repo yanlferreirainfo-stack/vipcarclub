@@ -457,6 +457,9 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
   .hero__lead { font-size: 1.2rem; }
   .hero__slides { bottom: 0; height: auto; }
   .hero { --slide-shift: 0%; }
+  /* Fotos com o carro no centro: empurra para a esquerda, longe do formulário
+     (o quanto fica em --pc-shift, em cada foto no index.html) */
+  .hero__slides .hero__slide--left { left: calc(var(--pc-shift) * -1); width: calc(100% + var(--pc-shift)); max-width: none; }
   .hero__slides .hero__slide { height: 100%; }
   .hero__slides::after { display: none; }
 

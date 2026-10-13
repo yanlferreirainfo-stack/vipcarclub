@@ -75,14 +75,15 @@
   <!-- ============ HERO ============ -->
   <header class="hero">
     <div class="hero__slides" aria-hidden="true">
-      <!-- Cada foto tem 2 versões: carro-N.jpg (em pé, celular) e carro-N-pc.jpg (deitada, computador) -->
+      <!-- Cada foto tem 2 versões: carro-N.jpg (em pé, celular) e carro-N-pc.jpg (deitada, computador).
+           --pc-shift: quanto o carro vai para a esquerda no computador (maior = mais à esquerda) -->
       <picture>
         <source media="(orientation: landscape)" srcset="assets/carro-1-pc.jpg">
-        <img src="assets/carro-1.jpg" class="hero__slide is-active" alt="" fetchpriority="high" decoding="async">
+        <img src="assets/carro-1.jpg" style="--pc-shift: 5%" class="hero__slide hero__slide--left is-active" alt="" fetchpriority="high" decoding="async">
       </picture>
       <picture>
         <source media="(orientation: landscape)" srcset="assets/carro-2-pc.jpg">
-        <img src="assets/carro-2.jpg" class="hero__slide" alt="" loading="lazy" decoding="async">
+        <img src="assets/carro-2.jpg" style="--pc-shift: 12%" class="hero__slide hero__slide--left" alt="" loading="lazy" decoding="async">
       </picture>
       <picture>
         <source media="(orientation: landscape)" srcset="assets/carro-3-pc.jpg">
@@ -90,7 +91,7 @@
       </picture>
       <picture>
         <source media="(orientation: landscape)" srcset="assets/carro-4-pc.jpg">
-        <img src="assets/carro-4.jpg" class="hero__slide" alt="" loading="lazy" decoding="async">
+        <img src="assets/carro-4.jpg" style="--pc-shift: 7%" class="hero__slide hero__slide--left" alt="" loading="lazy" decoding="async">
       </picture>
     </div>
     <div class="hero__overlay" aria-hidden="true"></div>
