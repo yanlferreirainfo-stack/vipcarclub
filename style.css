@@ -362,6 +362,9 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
   border-bottom: 1px solid var(--border);
   text-align: center;
 }
+/* Segunda linha inteira, sem quebrar no meio */
+.cta__title { max-width: none; font-size: clamp(1.35rem, 6.4vw, 2.5rem); }
+.cta__line { display: block; white-space: nowrap; }
 .cta__text { margin: 12px auto 28px; color: var(--muted); max-width: 40ch; }
 
 /* Rodapé */
