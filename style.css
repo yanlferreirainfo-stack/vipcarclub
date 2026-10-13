@@ -144,9 +144,12 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
 /* Celular: a foto ocupa a primeira tela e se funde no fundo preto abaixo dela,
    sem esticar até o fim do formulário (o que cortaria o carro nas laterais) */
 .hero__slides { bottom: auto; height: 100vh; height: 100svh; }
+/* Quanto a foto sobe no celular (corta o teto/céu e traz o carro para cima) */
+.hero { --slide-shift: 14%; }
+.hero__slides .hero__slide { top: calc(var(--slide-shift) * -1); bottom: auto; height: 100%; }
 .hero__slides::after {
   content: "";
-  position: absolute; left: 0; right: 0; bottom: 0;
+  position: absolute; left: 0; right: 0; bottom: var(--slide-shift);
   height: 25%;
   background: linear-gradient(180deg, rgba(10,10,10,0), var(--bg));
   z-index: 1;
@@ -453,6 +456,8 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
   }
   .hero__lead { font-size: 1.2rem; }
   .hero__slides { bottom: 0; height: auto; }
+  .hero { --slide-shift: 0%; }
+  .hero__slides .hero__slide { height: 100%; }
   .hero__slides::after { display: none; }
 
   .section { padding: 96px 0; }
