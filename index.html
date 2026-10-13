@@ -7,22 +7,24 @@
   <meta name="description" content="Lanternagem e pintura de alto padrão para carros nacionais e importados em Belo Horizonte. Cabine de pintura profissional, mais de 20 anos de experiência. Orçamento rápido pelo WhatsApp: é só mandar a foto.">
   <meta name="theme-color" content="#0A0A0A">
 
-  <!-- Open Graph (depois de publicar, troque os caminhos pelo endereço completo, ex.: https://seudominio.com.br/assets/carro-1.jpg) -->
+  <!-- Open Graph (depois de publicar, troque os caminhos pelo endereço completo, ex.: https://seudominio.com.br/assets/carro-1-pc.jpg) -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="VipCar Club">
   <meta property="og:title" content="VipCar Club | Lanternagem e Pintura em BH">
   <meta property="og:description" content="Acabamento de fábrica para nacionais e importados. Orçamento rápido pelo WhatsApp: é só mandar a foto.">
-  <meta property="og:image" content="assets/carro-1.jpg">
-  <meta property="og:image:width" content="1400">
-  <meta property="og:image:height" content="1400">
+  <meta property="og:image" content="assets/carro-1-pc.jpg">
+  <meta property="og:image:width" content="1672">
+  <meta property="og:image:height" content="941">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-  <link rel="preload" as="image" href="assets/carro-1.jpg" fetchpriority="high">
+  <!-- Primeira foto do topo: versão em pé no celular, deitada no computador -->
+  <link rel="preload" as="image" href="assets/carro-1.jpg" media="(orientation: portrait)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/carro-1-pc.jpg" media="(orientation: landscape)" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -34,7 +36,7 @@
     "@type": "AutoBodyShop",
     "name": "VipCar Club",
     "description": "Lanternagem e pintura para carros nacionais e importados.",
-    "image": "assets/carro-1.jpg",
+    "image": "assets/carro-1-pc.jpg",
     "telephone": "+55 31 99170-1636",
     "address": {
       "@type": "PostalAddress",
@@ -73,10 +75,23 @@
   <!-- ============ HERO ============ -->
   <header class="hero">
     <div class="hero__slides" aria-hidden="true">
-      <img class="hero__slide is-active" src="assets/carro-1.jpg" alt="" fetchpriority="high" decoding="async">
-      <img class="hero__slide" src="assets/carro-2.jpg" alt="" loading="lazy" decoding="async">
-      <img class="hero__slide" src="assets/carro-3.jpg" alt="" loading="lazy" decoding="async">
-      <img class="hero__slide" src="assets/carro-4.jpg" alt="" loading="lazy" decoding="async">
+      <!-- Cada foto tem 2 versões: carro-N.jpg (em pé, celular) e carro-N-pc.jpg (deitada, computador) -->
+      <picture>
+        <source media="(orientation: landscape)" srcset="assets/carro-1-pc.jpg">
+        <img src="assets/carro-1.jpg" class="hero__slide is-active" alt="" fetchpriority="high" decoding="async">
+      </picture>
+      <picture>
+        <source media="(orientation: landscape)" srcset="assets/carro-2-pc.jpg">
+        <img src="assets/carro-2.jpg" class="hero__slide" alt="" loading="lazy" decoding="async">
+      </picture>
+      <picture>
+        <source media="(orientation: landscape)" srcset="assets/carro-3-pc.jpg">
+        <img src="assets/carro-3.jpg" class="hero__slide" alt="" loading="lazy" decoding="async">
+      </picture>
+      <picture>
+        <source media="(orientation: landscape)" srcset="assets/carro-4-pc.jpg">
+        <img src="assets/carro-4.jpg" class="hero__slide" alt="" loading="lazy" decoding="async">
+      </picture>
     </div>
     <div class="hero__overlay" aria-hidden="true"></div>
 

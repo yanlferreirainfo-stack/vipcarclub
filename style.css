@@ -141,12 +141,22 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
 
 .hero__slides, .hero__overlay { position: absolute; inset: 0; }
 .hero__slides { z-index: -2; background: var(--bg); }
+/* Celular: a foto ocupa a primeira tela e se funde no fundo preto abaixo dela,
+   sem esticar até o fim do formulário (o que cortaria o carro nas laterais) */
+.hero__slides { bottom: auto; height: 100vh; height: 100svh; }
+.hero__slides::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 25%;
+  background: linear-gradient(180deg, rgba(10,10,10,0), var(--bg));
+  z-index: 1;
+}
 
 .hero__slide {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center 60%;
+  object-position: center;
   opacity: 0;
   transform: scale(1.04);
   transition: opacity var(--slide-duration) ease, transform 7s ease-out;
@@ -179,7 +189,10 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
   font-size: clamp(2rem, 8.4vw, 3.6rem);
   font-weight: 800;
   text-wrap: balance;
+  /* sombra para o texto continuar legível sobre carros claros ou vermelhos */
+  text-shadow: 0 2px 18px rgba(0,0,0,.65), 0 1px 3px rgba(0,0,0,.5);
 }
+.hero__lead, .eyebrow { text-shadow: 0 1px 10px rgba(0,0,0,.7); }
 .hero__lead {
   margin: 16px 0 0;
   font-size: 1.08rem;
@@ -201,6 +214,17 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
   padding: 24px 20px;
   box-shadow: 0 30px 60px -20px rgba(0,0,0,.8);
   scroll-margin-top: 16px;
+}
+/* Celular: o formulário fica sobre o carro, então o cartão é mais transparente
+   para a foto aparecer por trás (os campos têm fundo próprio) */
+@media (max-width: 959px) {
+  .form-card {
+    background: rgba(12, 12, 12, 0.5);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  }
+  .field input[type="text"], .field select { background: rgba(10,10,10,.6); }
+  .photo__btn { background: rgba(10,10,10,.5); }
 }
 .form-card:focus { outline: none; }
 
@@ -428,7 +452,8 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
     margin-top: 16px;
   }
   .hero__lead { font-size: 1.2rem; }
-  .hero__slide { object-position: center 55%; }
+  .hero__slides { bottom: 0; height: auto; }
+  .hero__slides::after { display: none; }
 
   .section { padding: 96px 0; }
   .features__grid { grid-template-columns: repeat(4, 1fr); }
