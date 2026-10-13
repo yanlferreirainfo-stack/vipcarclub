@@ -15,6 +15,21 @@ const UPLOAD_TIMEOUT_MS = 20000; // depois disso, segue sem a foto
 const SLIDE_INTERVAL_MS = 5000;  // tempo de cada foto no topo
 const PHOTO_FALLBACK = 'Vou enviar a foto do veículo aqui na conversa.';
 
+// ---- Altura fixa da foto do topo no celular ------------------------------
+// A barra de endereço do celular some/aparece ao rolar e muda a altura da tela.
+// Fixamos a altura em pixels e só recalculamos se a largura mudar (girar o celular).
+(function lockHeroHeight() {
+  const root = document.documentElement;
+  let lastWidth = 0;
+  const set = () => {
+    if (window.innerWidth === lastWidth) return;
+    lastWidth = window.innerWidth;
+    root.style.setProperty('--hero-h', `${window.innerHeight}px`);
+  };
+  set();
+  window.addEventListener('resize', set);
+})();
+
 // ---- Slideshow do topo --------------------------------------------------
 (function slideshow() {
   const slides = document.querySelectorAll('.hero__slide');

@@ -122,11 +122,6 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ---------- Detalhe decorativo (curva do logo) ---------- */
-.swoosh { width: min(320px, 80%); height: auto; margin-top: 22px; overflow: visible; }
-.swoosh path { fill: none; stroke: var(--red); stroke-width: 3; stroke-linecap: round; }
-.swoosh .swoosh__thin { stroke: rgba(255,255,255,.55); stroke-width: 1.5; }
-.swoosh--center { margin: 0 auto 20px; width: min(220px, 60%); }
 
 /* =========================================================
    HERO
@@ -143,7 +138,9 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
 .hero__slides { z-index: -2; background: var(--bg); }
 /* Celular: a foto ocupa a primeira tela e se funde no fundo preto abaixo dela,
    sem esticar até o fim do formulário (o que cortaria o carro nas laterais) */
-.hero__slides { bottom: auto; height: 100vh; height: 100svh; }
+/* --hero-h é fixado em pixels pelo script.js ao abrir a página, para a foto não
+   mudar de tamanho quando a barra do navegador some/aparece ao rolar */
+.hero__slides { bottom: auto; height: 100vh; height: 100svh; height: var(--hero-h, 100svh); }
 /* Quanto a foto sobe no celular (corta o teto/céu e traz o carro para cima) */
 .hero { --slide-shift: 14%; }
 .hero__slides .hero__slide { top: calc(var(--slide-shift) * -1); bottom: auto; height: 100%; }
@@ -161,10 +158,9 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
   object-fit: cover;
   object-position: center;
   opacity: 0;
-  transform: scale(1.04);
-  transition: opacity var(--slide-duration) ease, transform 7s ease-out;
+  transition: opacity var(--slide-duration) ease;
 }
-.hero__slide.is-active { opacity: 1; transform: scale(1); }
+.hero__slide.is-active { opacity: 1; }
 
 .hero__overlay {
   z-index: -1;
@@ -203,6 +199,8 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
   max-width: 34ch;
 }
 .hero__lead strong { color: #fff; }
+/* Celular: espaço entre o texto e o formulário para o carro aparecer */
+@media (max-width: 959px) { .hero__copy { padding-bottom: 44px; } }
 
 /* =========================================================
    FORMULÁRIO
@@ -475,5 +473,4 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.12; margin: 0; lette
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-  .hero__slide { transform: none; }
 }
